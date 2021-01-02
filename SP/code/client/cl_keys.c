@@ -1712,7 +1712,7 @@ void Message_Key( int key ) {
 	char buffer[MAX_STRING_CHARS];
 
 
-	if ( key == K_ESCAPE ) {
+	if ( key == K_ESCAPE || key == K_JOY8 ) {
 		Key_SetCatcher( Key_GetCatcher( ) & ~KEYCATCH_MESSAGE );
 		Field_Clear( &chatField );
 		return;
@@ -2231,7 +2231,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 	}
 
 	// console key is hardcoded, so the user can never unbind it
-	if( key == K_CONSOLE || ( keys[K_SHIFT].down && key == K_ESCAPE ) )
+	if( key == K_CONSOLE || ( keys[K_SHIFT].down && (key == K_ESCAPE || key == K_JOY8) ) )
 	{
 		Con_ToggleConsole_f ();
 		Key_ClearStates ();
@@ -2245,7 +2245,9 @@ void CL_KeyDownEvent( int key, unsigned time )
 			// in cutscenes we need to handle keys specially (pausing not allowed in camera mode)
 			if ( (  key == K_ESCAPE ||
 					key == K_SPACE ||
-					key == K_ENTER ) && qtrue ) {
+					key == K_ENTER ||
+					key == K_JOY7 ||
+					key == K_JOY8 ) && qtrue ) {
 				if ( qtrue ) {
 					CL_AddReliableCommand( "cameraInterrupt", qfalse );
 				}
@@ -2258,7 +2260,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 			}
 		}
 
-		if ( ( Key_GetCatcher( ) & KEYCATCH_CONSOLE ) && key == K_ESCAPE ) {
+		if ( ( Key_GetCatcher( ) & KEYCATCH_CONSOLE ) && (key == K_ESCAPE || key == K_JOY8) ) {
 			// don't allow menu starting when console is down and camera running
 			return;
 		}
@@ -2284,7 +2286,8 @@ void CL_KeyDownEvent( int key, unsigned time )
 	}
 
 	// escape is always handled special
-	if ( key == K_ESCAPE ) {
+	if ( key == K_ESCAPE || key == K_JOY8 ) {\
+		key = K_ESCAPE;
 		if ( Key_GetCatcher( ) & KEYCATCH_MESSAGE ) {
 			// clear message mode
 			Message_Key( key );
@@ -2375,7 +2378,7 @@ void CL_KeyUpEvent( int key, unsigned time )
 	}
 
 	// don't process key-up events for the console key
-	if ( key == K_CONSOLE || ( key == K_ESCAPE && keys[K_SHIFT].down ) )
+	if ( key == K_CONSOLE || ( (key == K_ESCAPE || key == K_JOY8) && keys[K_SHIFT].down ) )
 		return;
 
 	//

@@ -2609,7 +2609,7 @@ qboolean Item_TextField_HandleKey( itemDef_t *item, int key ) {
 		}
 		// -NERVE - SMF
 
-		if ( key == K_ENTER || key == K_KP_ENTER || key == K_ESCAPE ) {
+		if ( key == K_ENTER || key == K_KP_ENTER || key == K_ESCAPE || key == K_JOY8 ) {
 			return qfalse;
 		}
 
@@ -3160,6 +3160,8 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	}
 	// - NERVE - SMF
 
+	Com_Printf("%i\n", key - K_JOY1 + 1);
+
 	// default handling
 	switch ( key ) {
 
@@ -3178,10 +3180,13 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	case K_UPARROW:
 	case K_LEFTARROW:
 	case K_MWHEELUP:
+	case K_JOY29:
+	case K_JOY32:
 		Menu_SetPrevCursorItem( menu );
 		break;
 
 	case K_ESCAPE:
+	case K_JOY8:
 		if ( !g_waitingForKey && menu->onESC ) {
 			itemDef_t it;
 			it.parent = menu;
@@ -3194,6 +3199,8 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	case K_DOWNARROW:
 	case K_RIGHTARROW:
 	case K_MWHEELDOWN:
+	case K_JOY30:
+	case K_JOY31:
 		Menu_SetNextCursorItem( menu );
 		break;
 
@@ -4004,6 +4011,7 @@ qboolean Item_Bind_HandleKey( itemDef_t *item, int key, qboolean down ) {
 		switch ( key )
 		{
 		case K_ESCAPE:
+		case K_JOY8:
 			g_waitingForKey = qfalse;
 			return qtrue;
 
