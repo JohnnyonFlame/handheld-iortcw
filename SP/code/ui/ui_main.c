@@ -4589,6 +4589,15 @@ static void UI_Update( const char *name ) {
 
 }
 
+static int UI_SaveExists( char *save ) {
+	for ( int i = 0; i < uiInfo.savegameCount; i++ ) {
+		if ( Q_stricmp( save, uiInfo.savegameList[uiInfo.savegameStatus.displaySavegames[i]].savegameName ) == 0 ) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
 
 /*
 ==============
@@ -4889,6 +4898,26 @@ static void UI_RunMenuScript( char **args ) {
 		} else if ( Q_stricmp( name, "Quit" ) == 0 ) {
 			trap_Cvar_Set( "ui_singlePlayerActive", "0" );
 			trap_Cmd_ExecuteText( EXEC_NOW, "quit" );
+		} else if ( Q_stricmp( name, "saveFast" ) == 0 ) {
+			char filename[MAX_QPATH];
+			char mapname[MAX_QPATH];
+			char saveslot[MAX_QPATH];
+
+			for ( int i = 0; i < 100; i++ ) {
+				trap_Cvar_VariableStringBuffer( "mapname", mapname, sizeof( mapname ) );
+				Q_strncpyz( filename, "", sizeof( filename ) );
+				snprintf( saveslot, MAX_QPATH, "%03d", i );
+				Q_strcat( filename, sizeof( filename ), mapname );
+				Q_strcat( filename, sizeof( filename ), saveslot );
+
+				if ( UI_SaveExists( filename ) == 1 )
+					continue;
+
+				trap_Cmd_ExecuteText( EXEC_APPEND, va( "savegame %s\n", filename ) );
+				break;
+			}
+			
+			Menus_CloseAll();
 		} else if ( Q_stricmp( name, "Controls" ) == 0 ) {
 			trap_Cvar_Set( "cl_paused", "1" );
 			trap_Key_SetCatcher( KEYCATCH_UI );

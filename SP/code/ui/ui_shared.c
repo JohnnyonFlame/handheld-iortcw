@@ -2127,6 +2127,41 @@ qboolean Item_ListBox_HandleKey( itemDef_t *item, int key, qboolean down, qboole
 	int count = DC->feederCount( item->special );
 	int max, viewmax;
 
+	// JohnnyonFlame: Allow joysticks to get inside loadgame menus
+	if ( key == K_JOY29 || key == K_JOY31 ) {
+		viewmax = ( item->window.rect.h / listPtr->elementHeight );
+		if ( key == K_JOY29 ) {
+			listPtr->cursorPos--;
+			if ( listPtr->cursorPos < 0 ) {
+				listPtr->cursorPos = 0;
+			}
+			if ( listPtr->cursorPos < listPtr->startPos ) {
+				listPtr->startPos = listPtr->cursorPos;
+			}
+			if ( listPtr->cursorPos >= listPtr->startPos + viewmax ) {
+				listPtr->startPos = listPtr->cursorPos - viewmax + 1;
+			}
+			item->cursorPos = listPtr->cursorPos;
+			DC->feederSelection( item->special, item->cursorPos );
+			return qtrue;
+		}
+		if ( key == K_JOY31 ) {
+			listPtr->cursorPos++;
+			if ( listPtr->cursorPos < listPtr->startPos ) {
+				listPtr->startPos = listPtr->cursorPos;
+			}
+			if ( listPtr->cursorPos >= count ) {
+				listPtr->cursorPos = count - 1;
+			}
+			if ( listPtr->cursorPos >= listPtr->startPos + viewmax ) {
+				listPtr->startPos = listPtr->cursorPos - viewmax + 1;
+			}
+			item->cursorPos = listPtr->cursorPos;
+			DC->feederSelection( item->special, item->cursorPos );
+			return qtrue;
+		}
+	}
+
 	if ( force || ( Rect_ContainsPoint( &item->window.rect, DC->cursorx, DC->cursory ) && item->window.flags & WINDOW_HASFOCUS ) ) {
 		max = Item_ListBox_MaxScroll( item );
 		if ( item->window.flags & WINDOW_HORIZONTAL ) {
@@ -2587,14 +2622,14 @@ qboolean Item_TextField_HandleKey( itemDef_t *item, int key ) {
 			}
 		}
 
-		if ( key == K_TAB || key == K_DOWNARROW || key == K_KP_DOWNARROW ) {
+		if ( key == K_TAB || key == K_DOWNARROW || key == K_KP_DOWNARROW || key == K_JOY31 ) {
 			newItem = Menu_SetNextCursorItem( item->parent );
 			if ( newItem && ( newItem->type == ITEM_TYPE_EDITFIELD || newItem->type == ITEM_TYPE_NUMERICFIELD || newItem->type == ITEM_TYPE_VALIDFILEFIELD ) ) {
 				g_editItem = newItem;
 			}
 		}
 
-		if ( key == K_UPARROW || key == K_KP_UPARROW ) {
+		if ( key == K_UPARROW || key == K_KP_UPARROW || key == K_JOY29 ) {
 			newItem = Menu_SetPrevCursorItem( item->parent );
 			if ( newItem && ( newItem->type == ITEM_TYPE_EDITFIELD || newItem->type == ITEM_TYPE_NUMERICFIELD || newItem->type == ITEM_TYPE_VALIDFILEFIELD ) ) {
 				g_editItem = newItem;
@@ -3075,7 +3110,6 @@ int UI_SelectForKey(int key)
 		case K_RIGHTARROW:
 		case K_KP_RIGHTARROW:
 		case K_JOY1:
-		case K_JOY2:
 		case K_JOY3:
 		case K_JOY4:
 			return 1; // next
@@ -3187,6 +3221,7 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 
 	case K_ESCAPE:
 	case K_JOY8:
+	case K_JOY2:
 		if ( !g_waitingForKey && menu->onESC ) {
 			itemDef_t it;
 			it.parent = menu;
@@ -3226,7 +3261,6 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 		break;
 
 	case K_JOY1:
-	case K_JOY2:
 	case K_JOY3:
 	case K_JOY4:
 	case K_AUX1:
@@ -3992,11 +4026,13 @@ qboolean Item_Bind_HandleKey( itemDef_t *item, int key, qboolean down ) {
 	if (!g_waitingForKey)
  	{
 		if (down && ((key == K_MOUSE1 && Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory))
-				|| key == K_ENTER || key == K_KP_ENTER || key == K_JOY1 || key == K_JOY2 || key == K_JOY3 || key == K_JOY4)) {
+				|| key == K_ENTER || key == K_KP_ENTER || key == K_JOY1 || key == K_JOY3 || key == K_JOY4)) {
 			g_waitingForKey = qtrue;
 			g_bindItem = item;
+			return qtrue;
 		}
-		return qtrue;
+		else
+			return qfalse;
 	}
 	else
 	{
