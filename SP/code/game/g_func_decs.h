@@ -1522,3 +1522,4 @@ extern int AICast_ShutdownClient ( int client ) ;
 extern int AICast_SetupClient ( int client ) ;
 extern cast_state_t * AICast_GetCastState ( int entitynum ) ;
 extern void AICast_Printf ( int type , const char * fmt , ... ) ;
+extern int SysMilliseconds( );

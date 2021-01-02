@@ -558,6 +558,25 @@ void ClientIntermissionThink( gclient_t *client ) {
 	}
 }
 
+#ifdef AUTOAIM
+int curtime;
+int	sys_timeBase;
+int SysMilliseconds (void)
+{	
+	struct timespec tp;
+	clock_gettime(CLOCK_MONOTONIC, &tp);
+	
+	if (!sys_timeBase)
+	{
+		sys_timeBase = tp.tv_sec;
+		return tp.tv_nsec/1000000;
+	}
+
+	curtime = (tp.tv_sec - sys_timeBase)*1000 + tp.tv_nsec/1000000;
+	
+	return curtime;
+}
+#endif
 
 /*
 ================

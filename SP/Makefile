@@ -1265,6 +1265,10 @@ ifeq ($(USE_BLOOM),1)
   CLIENT_CFLAGS += -DUSE_BLOOM
 endif
 
+ifeq ($(USE_AUTOAIM),1)
+  BASE_CFLAGS += -DAUTOAIM
+endif
+
 # https://reproducible-builds.org/specs/source-date-epoch/
 ifdef SOURCE_DATE_EPOCH
   BASE_CFLAGS += -DPRODUCT_DATE=\\\"$(shell date --date="@$$SOURCE_DATE_EPOCH" "+%b %_d %Y" | sed -e 's/ /\\\ /'g)\\\"

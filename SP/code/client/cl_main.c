@@ -88,6 +88,9 @@ cvar_t  *cl_avidemo;
 cvar_t  *cl_forceavidemo;
 
 cvar_t  *cl_freelook;
+#ifdef AUTOAIM
+cvar_t  *cl_autoaim;
+#endif
 cvar_t  *cl_sensitivity;
 
 cvar_t  *cl_mouseAccel;
@@ -3687,7 +3690,9 @@ void CL_Init( void ) {
 	cl_sensitivity = Cvar_Get( "sensitivity", "5", CVAR_ARCHIVE );
 	cl_mouseAccel = Cvar_Get( "cl_mouseAccel", "0", CVAR_ARCHIVE );
 	cl_freelook = Cvar_Get( "cl_freelook", "1", CVAR_ARCHIVE );
-
+#ifdef AUTOAIM
+	cl_autoaim = Cvar_Get( "cl_autoaim", "1", CVAR_ARCHIVE );
+#endif
 	// 0: legacy mouse acceleration
 	// 1: new implementation
 	cl_mouseAccelStyle = Cvar_Get( "cl_mouseAccelStyle", "0", CVAR_ARCHIVE );

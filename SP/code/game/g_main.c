@@ -46,6 +46,11 @@ typedef struct {
 gentity_t g_entities[MAX_GENTITIES];
 gclient_t g_clients[MAX_CLIENTS];
 
+#ifdef AUTOAIM
+gentity_t *g_autoAimEntity; //Added by Emile Belanger, trying to do proper autoaim
+unsigned int g_autoAimLastHitTime;
+#endif
+
 gentity_t       *g_camEnt = NULL;   //----(SA)	script camera
 
 // Rafael gameskill
