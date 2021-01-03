@@ -2247,7 +2247,8 @@ void CL_KeyDownEvent( int key, unsigned time )
 					key == K_SPACE ||
 					key == K_ENTER ||
 					key == K_JOY7 ||
-					key == K_JOY8 ) && qtrue ) {
+					key == K_JOY8 ||
+					key == K_JOY2 ) && qtrue ) {
 				if ( qtrue ) {
 					CL_AddReliableCommand( "cameraInterrupt", qfalse );
 				}
