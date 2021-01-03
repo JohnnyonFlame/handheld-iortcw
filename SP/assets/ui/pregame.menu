@@ -10,6 +10,7 @@
     		fullScreen MENU_TRUE
     		visible MENU_TRUE
       		style WINDOW_STYLE_EMPTY
+			onESC { uiScript playerstart }
 
 //
 // draw levelshot

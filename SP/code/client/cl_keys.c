@@ -2331,7 +2331,9 @@ void CL_KeyDownEvent( int key, unsigned time )
 			// any key gets out of clipboard
 			key = K_ESCAPE;
 		} else if ( activeMenu == UIMENU_PREGAME ) {
-			if ( key != K_MOUSE1 ) {
+			// JohnnyonFlame: Don't eat the B button, so you can escape out of
+			// the PREGAME screen with both Select and B
+			if ( key != K_MOUSE1 && key != K_JOY2 ) {
 				return; // eat all keys except mouse click
 			}
 		} else {
