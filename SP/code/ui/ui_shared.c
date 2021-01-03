@@ -2161,6 +2161,12 @@ qboolean Item_ListBox_HandleKey( itemDef_t *item, int key, qboolean down, qboole
 			return qtrue;
 		}
 	}
+	// Fake mouse hit
+	if ( key == K_JOY1 ) {
+		Item_RunScript( item, listPtr->doubleClick );
+		return qtrue;
+	}
+
 
 	if ( force || ( Rect_ContainsPoint( &item->window.rect, DC->cursorx, DC->cursory ) && item->window.flags & WINDOW_HASFOCUS ) ) {
 		max = Item_ListBox_MaxScroll( item );
