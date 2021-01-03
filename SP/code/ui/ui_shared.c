@@ -3200,7 +3200,8 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	}
 	// - NERVE - SMF
 
-	Com_Printf("%i\n", key - K_JOY1 + 1);
+	// Get key name
+	// Com_Printf("%i\n", key - K_JOY1 + 1);
 
 	// default handling
 	switch ( key ) {
