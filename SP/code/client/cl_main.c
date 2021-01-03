@@ -104,6 +104,10 @@ cvar_t  *m_forward;
 cvar_t  *m_side;
 cvar_t  *m_filter;
 
+cvar_t  *j_sensitivity;
+cvar_t  *j_accel_time;
+cvar_t  *j_accel_response;
+cvar_t  *j_response;
 cvar_t	*j_pitch;
 cvar_t	*j_yaw;
 cvar_t	*j_forward;
@@ -3730,6 +3734,10 @@ void CL_Init( void ) {
 	m_side = Cvar_Get( "m_side", "0.25", CVAR_ARCHIVE );
 	m_filter = Cvar_Get( "m_filter", "0", CVAR_ARCHIVE );
 
+	j_sensitivity =  Cvar_Get ("j_sensitivity",  "0.6", CVAR_ARCHIVE);
+	j_accel_time =    Cvar_Get ("j_accel_time",  "1000", CVAR_ARCHIVE);
+	j_accel_response= Cvar_Get ("j_accel_response","1", CVAR_ARCHIVE);
+	j_response =     Cvar_Get ("j_response",     "1.8", CVAR_ARCHIVE);
 	j_pitch =        Cvar_Get ("j_pitch",        "0.022", CVAR_ARCHIVE);
 	j_yaw =          Cvar_Get ("j_yaw",          "-0.022", CVAR_ARCHIVE);
 	j_forward =      Cvar_Get ("j_forward",      "-0.25", CVAR_ARCHIVE);

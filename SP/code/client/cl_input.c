@@ -431,18 +431,44 @@ void CL_JoystickEvent( int axis, int value, int time ) {
 	cl.joystickAxis[axis] = value;
 }
 
+static float aimRamp(float x, float y, float max, float coef, float response) 
+{
+	float ramp_x = fabsf(x) / max;
+	float ramp_y = fabsf(y) / max;
+	float ramp = sqrtf(ramp_x * ramp_x + ramp_y * ramp_y);
+	if (ramp > 1.0f)
+		ramp = 1.0f;
+	
+	// JohnnyonFlame: Joystick aiming response curve [not acceleration]
+	return powf(ramp * coef, response);
+}
+
 /*
 =================
 CL_JoystickMove
 =================
 */
+
+static float joy_accelTime = 0;
 void CL_JoystickMove( usercmd_t *cmd ) {
 	float anglespeed;
+	float aim_ramp = aimRamp(cl.joystickAxis[j_yaw_axis->integer], 
+		cl.joystickAxis[j_pitch_axis->integer], 32768.f, 1.2f, j_response->value);
 
-	float yaw     = j_yaw->value     * cl.joystickAxis[j_yaw_axis->integer];
+	if (aim_ramp > 0.01f)
+		joy_accelTime += frame_msec;
+	else
+		joy_accelTime = 0.0f;
+
+	if (joy_accelTime >= j_accel_time->value)
+		joy_accelTime = j_accel_time->value;
+
+	float accelFinalCoef = powf(joy_accelTime / j_accel_time->value, j_accel_response->value);
+
 	float right   = j_side->value    * cl.joystickAxis[j_side_axis->integer];
 	float forward = j_forward->value * cl.joystickAxis[j_forward_axis->integer];
-	float pitch   = j_pitch->value   * cl.joystickAxis[j_pitch_axis->integer];
+	float yaw     = j_yaw->value     * accelFinalCoef * aim_ramp * j_sensitivity->value * cl.joystickAxis[j_yaw_axis->integer];
+	float pitch   = j_pitch->value   * accelFinalCoef * aim_ramp * j_sensitivity->value * cl.joystickAxis[j_pitch_axis->integer];
 	float up      = j_up->value      * cl.joystickAxis[j_up_axis->integer];
 
 	if ( !( kb[KB_SPEED].active ^ cl_run->integer ) ) {

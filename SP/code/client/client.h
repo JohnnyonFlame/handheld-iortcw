@@ -428,6 +428,10 @@ extern cvar_t  *m_forward;
 extern cvar_t  *m_side;
 extern cvar_t  *m_filter;
 
+extern  cvar_t  *j_sensitivity;
+extern  cvar_t  *j_response;       // Joystick exponent - determines the aim response curve shape
+extern  cvar_t  *j_accel_time;     // Milliseconds from motion until full joystick acceleration
+extern  cvar_t  *j_accel_response; // Joystick acceleration exponent - determines the response curve shape
 extern	cvar_t	*j_pitch;
 extern	cvar_t	*j_yaw;
 extern	cvar_t	*j_forward;

@@ -4572,6 +4572,12 @@ static void UI_Update( const char *name ) {
 		} else {
 			trap_Cvar_SetValue( "m_pitch", -0.022f );
 		}
+	} else if ( Q_stricmp( name, "ui_joystickPitch" ) == 0 ) {
+		if ( val == 0 ) {
+			trap_Cvar_SetValue( "j_pitch", 0.022f );
+		} else {
+			trap_Cvar_SetValue( "j_pitch", -0.022f );
+		}
 
 //----(SA)	added
 	} else if ( Q_stricmp( name, "ui_savegameListAutosave" ) == 0 ) {
