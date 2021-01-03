@@ -3848,7 +3848,8 @@ static void UI_LoadSavegames( char *dir ) {
 		}
 
 		// sort it
-		UI_SavegameSort( 0, qtrue );
+		uiInfo.savegameStatus.sortDir = 1;
+		UI_SavegameSort( 1, qtrue );
 
 		// set current selection
 //		i = UI_SavegameIndexFromName(ui_savegameName.string);
