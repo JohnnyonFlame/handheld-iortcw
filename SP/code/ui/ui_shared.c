@@ -3118,11 +3118,13 @@ int UI_SelectForKey(int key)
 		case K_JOY1:
 		case K_JOY3:
 		case K_JOY4:
+		case K_JOY30:
 			return 1; // next
 
 		case K_MOUSE2:
 		case K_LEFTARROW:
 		case K_KP_LEFTARROW:
+		case K_JOY32:
 			return -1; // previous
 	}
 
