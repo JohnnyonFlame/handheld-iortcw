@@ -169,7 +169,7 @@ itemDef {
 
 itemDef {
 	name options
-	text "OPTIONS"
+	text "MISC"
 	type 1
 	textfont UI_FONT_NORMAL
 
@@ -182,7 +182,7 @@ itemDef {
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6  
 	visible 1 
-	action { open ingame_options }
+	action { open ingame_handheld_misc }
 	mouseEnter { setitemcolor options backcolor .15 .1 .1 .7 }
 	mouseExit { setitemcolor options backcolor .4 .4 .4 .6  }
 	}

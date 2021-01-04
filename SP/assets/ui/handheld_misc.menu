@@ -1,0 +1,427 @@
+#include "ui/menudef.h"
+
+{
+
+\\ SETUP MENU \\
+menuDef {
+   	name "handheld_misc"
+   	visible 0
+   	fullscreen 1
+   	rect 186 0 454 480
+   	focusColor .9 .9 .9 1
+   	style 1
+   	border 1
+	soundloop ""
+	onOpen { setitemcolor fadebox backcolor 0 0 0 1 ; 
+		fadeout fadebox ;
+		hide back_alt ;
+		show back ;
+		hide grpmessage }
+	onEsc { close handheld_misc ; open main }
+
+	itemDef {
+		name solid_box
+		style 1 
+		rect 4 2 178 426
+		border 1 
+		bordersize 1
+		bordercolor .5 .5 .5 .5
+		backcolor 0 0 .75 .25
+		visible 1 
+		decoration 
+		mouseEnter { setcolor backcolor .75 0 0 .5 }
+		mouseExit { setcolor backcolor 0 0 .75 .25 }
+	}
+
+//////////////// new wolf
+
+	itemDef {
+		name menu_select					// menu_select
+		style WINDOW_STYLE_SHADER
+		rect 0 0 640 480
+		background "menu_select"
+		visible 1
+		decoration
+	}
+
+	itemDef {
+		name band2					// band2
+		style WINDOW_STYLE_SHADER
+		rect 360 20 128 640
+		background "band2"
+		visible 1
+		decoration
+	}
+
+itemDef {
+      	name bands					// bands
+      	style WINDOW_STYLE_SHADER
+      	rect 0 -480 640 1024
+     	background "bands"
+      	visible 1
+	decoration
+    	}
+
+itemDef {
+		name BLACKGRAD					// BLACKGRAD
+		style WINDOW_STYLE_SHADER
+		rect 0 -4 640 132
+		background "BLACKGRAD"
+		visible 1
+		decoration
+		}
+
+itemDef {
+		name BLACKGRAD2					// BLACKGRAD
+		style WINDOW_STYLE_SHADER
+		rect 0 420 640 -128
+		background "BLACKGRAD"
+		visible 1
+		decoration
+		}
+
+itemDef {
+		name FLAME					// FLAME
+		style WINDOW_STYLE_SHADER
+		rect 210 20 220 67
+		background "fLAME"
+		visible 1
+		decoration
+		}
+
+itemDef {
+		name WOLFFLAMELOGO					// WOLFFLAMELOGO
+		style WINDOW_STYLE_SHADER
+		rect 200 -5 240 120
+		background "WOLFFLAMELOGO"
+		visible 1
+		decoration
+		}
+
+itemDef {
+		name gold_line					// gold_line
+		style WINDOW_STYLE_SHADER
+		rect 0 76 226 10
+		background "gold_line"
+		visible 1
+		decoration
+		}
+
+itemDef {
+		name gold_line					// gold_line
+		style WINDOW_STYLE_SHADER
+		rect 414 76 230 10
+		background "gold_line"
+		visible 1
+		decoration
+		}
+
+	itemDef {
+		name WOLFICONBACK					// WOLFICONBACK
+		style WINDOW_STYLE_SHADER
+		rect 140 200 360 190
+		background "WOLFICONBACK"
+		visible 1
+		decoration
+		}
+
+// Main Window //
+
+	itemDef
+	{
+		name window2
+		group grpControlbutton
+		rect 27 110 590 20
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .1 .1 .1 .2
+		forecolor 1 1 1 1
+		backcolor .3 0.5 0.2 .25
+		visible 1
+		decoration
+	}
+
+	itemDef 
+	{
+		name window
+		group grpControlbutton
+		rect 21 107 600 324
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible MENU_TRUE
+		decoration
+	}
+
+	itemDef {
+		name levelbar
+		text "Misc"
+		textscale .42
+		style 0	
+		type 1
+		textfont UI_FONT_NORMAL
+		textalign ITEM_ALIGN_CENTER
+		textstyle 6
+		rect 320 110 320 30
+		textalign 1	 
+		textalignx 0
+		textaligny 19       
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+		decoration
+	}
+
+// Control Settings	//
+
+
+	itemDef {
+		name cgfov
+		type ITEM_TYPE_MULTI
+		text "Field of View:  "
+		cvar "cg_fov"
+		cvarFloatList { 
+			"65.0" 65.0
+			"70.0" 70.0
+			"75.0" 75.0
+			"80.0" 80.0
+			"85.0" 85.0
+			"90.0" 90.0
+			"100.0" 100.0
+			"fish mode" 110.0
+		}
+
+		rect 120 134 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name autoaim
+		type ITEM_TYPE_MULTI
+		text "Aim Assist:  "
+		cvar "autoaim"
+		cvarFloatList { 
+			"yes" 1.0
+			"no"  0.0
+		}
+
+		rect 120 157 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name cghudalpha
+		type ITEM_TYPE_MULTI
+		text "HUD Alpha:  "
+		cvar "cg_hudAlpha"
+		cvarFloatList { 
+			"0.0" 0.0 "0.1" 0.1 "0.2" 0.2 "0.3" 0.3 "0.4" 0.4
+			"0.5" 0.5 "0.6" 0.6 "0.7" 0.7 "0.8" 0.8 "0.9" 0.9
+			"1.0" 1.0
+		}
+
+		rect 120 180 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name cgxhairalpha
+		type ITEM_TYPE_MULTI
+		text "Crosshair Alpha:  "
+		cvar "cg_crosshairAlpha"
+		cvarFloatList { 
+			"0.0" 0.0 "0.1" 0.1 "0.2" 0.2 "0.3" 0.3 "0.4" 0.4
+			"0.5" 0.5 "0.6" 0.6 "0.7" 0.7 "0.8" 0.8 "0.9" 0.9
+			"1.0" 1.0
+		}
+
+		rect 120 203 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name cgxhairsize
+		type ITEM_TYPE_MULTI
+		text "Crosshair Size:  "
+		cvar "cg_crosshairsize"
+		cvarFloatList { "Small" 24 "Medium" 32 "Large" 48 "Huge" 64 "Tiny" 12 }
+		rect 120 226 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	// JohnnyonFlame: This isn't optimal, but as long as you don't change the NUM_CROSSHAIRS constant in
+	// code/ui/ui_shared.h this shouldn't be a big deal.
+	itemDef {
+		name view
+		text "Crosshair Style:  "
+ 		type ITEM_TYPE_MULTI
+		cvar "cg_drawCrosshair"
+		cvarFloatList { "Off" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 8 "9" 9 }
+		action { uiScript update "cg_drawCrosshair" }
+		rect 120 249 400 21
+		textalignx 220
+		textalign ITEM_ALIGN_RIGHT
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+	}
+
+
+	itemDef {
+		name view				
+		rect 270 300 100 100
+		ownerdraw UI_CROSSHAIR
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 0
+		textaligny 100  
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07      
+		forecolor 1 1 1 1
+		decoration
+		visible 1
+	}
+
+// Footer //
+
+	itemDef {
+      	name gotobar
+      	style 2
+      	rect 0 445 640 20 
+      	textscale 0.4
+      	textalign 0		// center
+      	textalignx 60        	// x alignment point for text
+         // use it to offset left/right text from the edge 
+         // or to center the text on a different point
+      	textaligny 21        
+      	style 2
+      	border 4
+      	bordercolor 0.5 0.5 0.5 0.0
+      	bordersize 2
+      	backcolor 0.5 0.5 .5 0.0
+      	visible 1 
+      	mouseEnter { setcolor backcolor .5 0.5 0.5 .5 }
+      	mouseExit { setcolor backcolor .5 .5 .5 .0 }
+      	decoration 
+	}
+
+	itemDef {
+		name back
+		text "BACK"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 30 450 80 20
+		textalign 0
+		textscale .4
+		textalignx 6
+		textaligny 15
+		forecolor .9 .9 .9 .9
+		visible 1 
+		action { 
+			close handheld_misc ; 
+			open main 
+		}
+		mouseEnter { 
+			hide back ;
+			show back_alt ;
+			show message_back 
+		}
+	}
+
+	itemDef {
+		name back_alt
+		text "BACK"
+		type 1
+		textfont UI_FONT_NORMAL
+		style 0	
+		textstyle 6
+		rect 30 450 80 20
+		textalign 0
+		textscale .4
+		textalignx 6
+		textaligny 15
+		forecolor .6 .6 .6 .6
+		visible 1 
+		type ITEM_TYPE_BUTTON
+		action { 
+			hide grpControls ; 
+			close handheld_misc;
+			open main 
+		}  
+		mouseExit { 
+			hide back_alt ;
+			show back ;
+			hide message_back
+		}	  
+	}
+
+//	MESSAGES	//
+	itemDef {
+		name message_back
+		group grpmessage
+		style 0 
+		rect 320 450 128 30
+		textstyle 1
+		textalign 1
+		textalignx 0
+		textaligny 15
+		textscale .4
+		text "EXIT TO MAIN MENU"
+		forecolor 1 1 1 1
+		decoration 
+		visible 0
+	}
+
+	itemDef {
+      	name fadebox
+      	style WINDOW_STYLE_FILLED
+		background "ui/assets/fadebox.tga"
+		forecolor 0 0 0 1
+		backcolor 0 0 0 1
+		rect 0 0 640 480
+		visible 1 
+		decoration
+    }
+}
+}

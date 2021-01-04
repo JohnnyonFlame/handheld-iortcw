@@ -4591,6 +4591,10 @@ static void UI_Update( const char *name ) {
 //			UI_LoadSavegames(cvar.value);
 			UI_LoadSavegames( "autosave" );    // get from default directory 'main/save/autosave/*.svg'
 		}
+// JohnnyonFlame: Update current crosshair info if the variable is updated.
+// Otherwise the new menu will not update the image
+	} else if ( Q_stricmp( name, "cg_drawCrosshair") == 0 ) {
+		uiInfo.currentCrosshair = (int)trap_Cvar_VariableValue( "cg_drawCrosshair" );
 	}
 //----(SA)	end
 
