@@ -6,6 +6,8 @@
 	loadMenu { "ui/ingame_handheld_controls.menu" } // JohnnyonFlame: Handheld specific controller schemes
 	loadMenu { "ui/handheld_misc.menu" } // JohnnyonFlame: Handheld specific misc settings
 	loadMenu { "ui/ingame_handheld_misc.menu" } // JohnnyonFlame: Handheld specific misc settings
+	loadMenu { "ui/handheld_system.menu" } // JohnnyonFlame: Handheld specific system settings
+	loadMenu { "ui/ingame_handheld_system.menu" } // JohnnyonFlame: Handheld specific system settings
 // 	loadMenu { "ui/joinserver.menu" }	// NERVE - SMF - commented in for multiplayer
  	loadMenu { "ui/setup.menu" }
 	loadMenu { "ui/controls.menu" }

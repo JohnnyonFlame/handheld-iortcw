@@ -202,7 +202,7 @@ itemDef {
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6
 	visible 1 
-	action { open ingame_system }
+	action { open ingame_handheld_system }
 	mouseEnter { setitemcolor system backcolor .15 .1 .1 .7 }
 	mouseExit { setitemcolor system backcolor .4 .4 .4 .6  }
 	}
