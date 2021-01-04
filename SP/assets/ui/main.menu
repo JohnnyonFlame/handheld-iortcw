@@ -267,7 +267,7 @@ menuDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 144 40 14 
+		rect 320 174 40 14 
 		textalign 1
 		textscale .6		
 		textalignx 0
@@ -290,7 +290,7 @@ menuDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 184 72 14 
+		rect 320 214 72 14 
 		textalign 1
 		textscale .6		
 		textalignx 0
@@ -316,7 +316,7 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 224 56 14 
+		rect 320 254 56 14 
 		textalign 1
 		textscale .6		
 		textalignx 0
@@ -384,7 +384,7 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 264 32 14 
+		rect 320 294 32 14 
 		textalign 1
 		textscale .6		
 		textalignx 0
