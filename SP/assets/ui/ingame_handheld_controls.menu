@@ -1,0 +1,212 @@
+#include "ui/menudef.h"
+
+
+
+
+{
+
+/////////////////////
+//
+//	main load/save menu
+//
+/////////////////////
+
+menuDef {
+   	name ingame_handheld_controls
+   	visible 0
+   	fullscreen 0
+	//outOfBoundsClick			// this closes the window if it gets a click out of the rectangle
+    rect 0 0 640 480
+   	focusColor 1 .75 0 1
+   	style 1
+   	border 1
+    onESC { close ingame_handheld_controls; }
+	
+// Main Window //
+
+	itemDef
+	{
+		name window2
+		group grpControlbutton
+		rect 27 130 590 20
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .1 .1 .1 .2
+		forecolor 1 1 1 1
+		backcolor .3 0.5 0.2 .25
+		visible 1
+		decoration
+	}
+
+	itemDef 
+	{
+		name window
+		group grpControlbutton
+		rect 21 127 600 304
+		style WINDOW_STYLE_FILLED
+		border 1
+		bordercolor .5 .5 .5 .5
+		forecolor 1 1 1 1
+		backcolor 0 0 0 .25
+		visible MENU_TRUE
+		decoration
+	}
+
+	itemDef {
+		name levelbar
+		text "Controls"
+		textscale .42
+		style 0	
+		type 1
+		textfont UI_FONT_NORMAL
+		textalign ITEM_ALIGN_CENTER
+		textstyle 6
+		rect 320 110 320 30
+		textalign 1	 
+		textalignx 0
+		textaligny 15        
+		backcolor 0 0 0 0
+		forecolor 1 1 1 1
+		visible MENU_TRUE
+		decoration
+	}
+
+// Control Settings	//
+	itemDef {
+		name jsensitivity
+		type ITEM_TYPE_MULTI
+		text "Joystick Sensitivity:  "
+		cvar "j_sensitivity"
+		cvarFloatList { 
+			"0.1" 0.1
+			"0.2" 0.2
+			"0.3" 0.3
+			"0.4" 0.4
+			"0.5" 0.5
+			"0.6" 0.6
+			"0.7" 0.7
+			"0.8" 0.8
+			"0.9" 0.9
+			"1.0" 1.0
+		}
+
+		rect 120 157 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name jresponse
+		type ITEM_TYPE_MULTI
+		text "Joystick Response:  "
+		cvar "j_response"
+		cvarFloatList { 
+			          "0.1" 0.1 "0.2" 0.2 "0.3" 0.3 "0.4" 0.4
+			"0.5" 0.5 "0.6" 0.6 "0.7" 0.7 "0.8" 0.8 "0.9" 0.9
+			"1.0 (flat)" 1.0
+			"1.1" 1.1 "1.2" 1.2 "1.3" 1.3 "1.4" 1.4 "1.5" 1.5 
+			"1.6" 1.6 "1.7" 1.7 "1.8" 1.8 "1.9" 1.9 "2.0" 2.0
+		}
+
+		rect 120 180 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name jacceltime
+		type ITEM_TYPE_MULTI
+		text "Joy Accel Time:  "
+		cvar "j_accel_time"
+		cvarFloatList { 
+			"off"   0.0
+			"0.25s" 250.0
+			"0.50s" 500.0
+			"0.75s" 750.0
+			"1.00s" 1000.0
+			"1.50s" 1500.0
+			"2.00s" 2000.0
+		}
+
+		rect 120 203 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+	itemDef {
+		name jaccelresponse
+		type ITEM_TYPE_MULTI
+		text "Joy Accel Response:  "
+		cvar "j_accel_response"
+		cvarFloatList { 
+			          "0.1" 0.1 "0.2" 0.2 "0.3" 0.3 "0.4" 0.4
+			"0.5" 0.5 "0.6" 0.6 "0.7" 0.7 "0.8" 0.8 "0.9" 0.9
+			"1.0 (flat)" 1.0
+			"1.1" 1.1 "1.2" 1.2 "1.3" 1.3 "1.4" 1.4 "1.5" 1.5 
+			"1.6" 1.6 "1.7" 1.7 "1.8" 1.8 "1.9" 1.9 "2.0" 2.0
+		}
+
+		rect 120 226 400 21
+		textalign ITEM_ALIGN_RIGHT
+		textalignx 220
+		textaligny 17
+		textscale .40        
+		forecolor 1 1 1 1
+		style WINDOW_STYLE_FILLED
+		backcolor 1 1 1 .07
+		visible 1
+    }
+
+// Footer //
+
+	itemDef {
+      	name gotobar
+      	style 2
+      	rect 0 445 640 20 
+      	textscale 0.4
+      	textalign 0		// center
+      	textalignx 60        	// x alignment point for text
+         // use it to offset left/right text from the edge 
+         // or to center the text on a different point
+      	textaligny 21        
+      	style 2
+      	border 4
+      	bordercolor 0.5 0.5 0.5 0.0
+      	bordersize 2
+      	backcolor 0.5 0.5 .5 0.0
+      	visible 1 
+      	mouseEnter { setcolor backcolor .5 0.5 0.5 .5 }
+      	mouseExit { setcolor backcolor .5 .5 .5 .0 }
+      	decoration 
+	}
+
+	itemDef {
+      	name rg351p_layout
+      	style WINDOW_STYLE_FILLED
+ 		background "ui/assets/rg351p_layout.tga"
+		forecolor 1 1 1 1
+		backcolor 1 1 1 1
+		rect 0 0 640 480
+      	visible 1 
+		decoration
+    }	
+}	// end menudef
+}	// end menu

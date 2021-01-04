@@ -312,7 +312,7 @@ menuDef {
 
 itemDef {
 		name options
-		text "OPTIONS"
+		text "CONTROLS"
 		type 1
 		style 0	
 		textstyle 6
@@ -327,8 +327,7 @@ itemDef {
 		mouseEnter {fadein message_accept }
 		action {play "sound/misc/zap.wav" ; 
 		close main ; 
-		open setup_menu ;
-		open control_menu
+		open handheld_controls
 		} 
     }
 
