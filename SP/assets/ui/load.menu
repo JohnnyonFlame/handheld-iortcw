@@ -35,6 +35,7 @@ menuDef {
 		show back;
 		hide grpmessage;
 		setcvar ui_savegameListAutosave 0	// hmm
+		setFocus savegamelist
 	}
 		 
 

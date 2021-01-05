@@ -25,6 +25,7 @@ menuDef {
 				setcvar "ui_savegame" "<type name here>" ;
 				setcvar ui_savegameListAutosave 0;	// hmm
 //				uiScript update ui_savegameListAutosave
+				setFocus savegamelist
 	}
 
 	
