@@ -13,7 +13,7 @@
 	focusColor 1 .75 0 1
 	style 1
 	border 1
-	onOpen { show grpMenu ; hide grpConfirm }
+	onOpen { show grpMenu ; hide grpConfirm; setFocus leave_mm }
 
 
 
@@ -64,7 +64,7 @@ itemDef {
 }
 
 itemDef {
-	 name leave
+	 name leave_mm
 	 text "Main Menu"
 	 group grpMenu
 	 type 1
@@ -77,7 +77,7 @@ itemDef {
 	 backcolor 1 1 1 .02  
 	 forecolor 1 1 1 1
 	 visible 0
-       action { hide grpMenu ; show leaveConfirm }
+       action { hide grpMenu ; show leaveConfirm; show leaveConfirm_y; setFocus leaveConfirm_y }
     	}
 
 
@@ -96,7 +96,7 @@ itemDef {
 		backcolor 1 1 1 .02 	
 		forecolor 1 1 1 1
 		visible 0
-      	action { hide grpMenu ; show quitConfirm }
+      	action { hide grpMenu ; show quitConfirm; show quitConfirm_y; setFocus quitConfirm_y }
     	}
 
 
@@ -136,7 +136,7 @@ itemDef {
 
 
 itemDef {
-	name leaveConfirm
+	name leaveConfirm_y
 	text "Yes"
 	group grpConfirm
 	type 1
@@ -169,7 +169,7 @@ itemDef {
 	textalignx 20
 	textaligny 15
 	visible 1
-	action { hide grpConfirm ; show grpMenu }
+	action { hide grpConfirm ; show grpMenu; setFocus leave_mm }
 	mouseEnter { setitemcolor ok backcolor .1 .37 .1 1 }
       	mouseExit { setitemcolor ok backcolor .37 .1 .1 1 }
 	}
@@ -209,7 +209,7 @@ itemDef {
 
 
 itemDef {
-	name restartConfirm
+	name restartConfirm_yes
 	text "Yes"
 	group grpConfirm
 	type 1
@@ -242,7 +242,7 @@ itemDef {
 	textalignx 20
 	textaligny 15 
 	visible 1
-	action { hide grpConfirm ; show grpMenu }
+	action { hide grpConfirm ; show grpMenu; setFocus leave_mm }
 	mouseEnter { setitemcolor ok backcolor .1 .37 .1 1 }
       	mouseExit { setitemcolor ok backcolor .37 .1 .1 1 }
 	}
@@ -280,7 +280,7 @@ itemDef {
 
 
 itemDef {
-	name quitConfirm
+	name quitConfirm_y
 	text "Yes"
 	group grpConfirm
 	type 1
@@ -310,7 +310,7 @@ itemDef {
 	textalignx 20
 	textaligny 15
 	visible 1
-	action { hide grpConfirm ; show grpMenu }
+	action { hide grpConfirm ; show grpMenu; setFocus leave_mm }
 	mouseEnter { setitemcolor ok backcolor .1 .37 .1 1 }
       	mouseExit { setitemcolor ok backcolor .37 .1 .1 1 }
 	}
