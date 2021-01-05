@@ -305,20 +305,46 @@ itemDef {
 // the actual switch
 
 	itemDef {
-		name autosave
-//		type ITEM_TYPE_BUTTON
+		name mansave
+		type ITEM_TYPE_BUTTON
 		rect 104 390 190 24
-//		cvar ui_savegameListAutosave
-		type ITEM_TYPE_MULTI
-		cvar "ui_savegameListAutosave"
-		cvarFloatList { "" 0 "" 1  }	// no text, just toggle
 		style 1
 		border 1
-		bordercolor .5 .5 .5 .5        
+		bordercolor .5 .5 .5 .5     
+
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "0" }
+   
 		backcolor 0 0 0 .25
 		mouseEnter { setitemcolor showgametype backcolor .3 .5 .2 .25 }
 		mouseExit { setitemcolor showgametype backcolor 0 0 0 .25 }
-		action {	uiScript update "ui_savegameListAutosave" }	// update the feeder
+		action { 
+			setcvar ui_savegameListAutosave 1;	
+			uiScript update "ui_savegameListAutosave";
+			setFocus autosave;
+		}	// update the feeder
+		visible MENU_TRUE
+	}
+
+	itemDef {
+		name autosave
+		type ITEM_TYPE_BUTTON
+		rect 104 390 190 24
+		style 1
+		border 1
+		bordercolor .5 .5 .5 .5
+		
+		cvarTest "ui_savegameListAutosave"
+		showcvar { "1" }
+
+		backcolor 0 0 0 .25
+		mouseEnter { setitemcolor showgametype backcolor .3 .5 .2 .25 }
+		mouseExit { setitemcolor showgametype backcolor 0 0 0 .25 }
+		action { 
+			setcvar ui_savegameListAutosave 0;	
+			uiScript update "ui_savegameListAutosave";
+			setFocus mansave;
+		}	// update the feeder
 		visible MENU_TRUE
 	}
 
