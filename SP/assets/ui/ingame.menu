@@ -115,7 +115,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6  
 	visible 1
@@ -136,7 +136,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6  
 	visible 1
@@ -158,7 +158,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6  
 	visible 1 
@@ -178,7 +178,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6  
 	visible 1 
@@ -198,7 +198,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6
 	visible 1 
@@ -218,7 +218,7 @@ itemDef {
 	textalign 1	
 	textalignx 29      
 	textaligny 14
-	textscale .23
+	textscale .32
 	forecolor .8 .8 .8 1
 	backcolor .4 .4 .4 .6 
 	visible 1 
