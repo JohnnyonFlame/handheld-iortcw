@@ -59,6 +59,7 @@ itemDef {
 	textaligny 10
 	forecolor 1 1 1 1
 	backcolor .1 .1 .1 0
+	decoration
 	visible 1
 }
 
@@ -66,6 +67,7 @@ itemDef {
 	 name leave
 	 text "Main Menu"
 	 group grpMenu
+	 type 1
 	 rect 78 45 290 12
 	 textalign ITEM_ALIGN_RIGHT
 	 textalignx 176
