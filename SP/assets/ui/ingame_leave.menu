@@ -37,7 +37,7 @@ itemDef
 	{
 	name window2
 	group grpControlbutton
-	rect 2 4 439 20	
+	rect 2 10 439 20	
 	style WINDOW_STYLE_FILLED
 	border 1
 	bordercolor .1 .1 .1 .2
@@ -51,12 +51,13 @@ itemDef {
 	name leave
 	text "Exit Menu"
 	type 1
-	textscale .23
+	textscale .42
 	group grpControlbutton
-	rect 168 10 100 12
+	rect 0 10 443 30
+	textstyle 6
 	textalign 1
-	textalignx 50
-	textaligny 10
+	textalignx 222
+	textaligny 19
 	forecolor 1 1 1 1
 	backcolor .1 .1 .1 0
 	decoration
@@ -68,13 +69,13 @@ itemDef {
 	 text "Main Menu"
 	 group grpMenu
 	 type 1
-	 rect 78 45 290 12
-	 textalign ITEM_ALIGN_RIGHT
-	 textalignx 176
-	 textaligny 10
-	 textscale .23		
+	 rect 78 45 290 21
+	 textalign ITEM_ALIGN_CENTER
+	 textalignx 145
+	 textaligny 17
+	 textscale .40		
 	 style WINDOW_STYLE_FILLED
-	 backcolor 1 1 1 .02  
+	 backcolor 1 1 1 .07
 	 forecolor 1 1 1 1
 	 visible 0
        action { hide grpMenu ; show leaveConfirm; show leaveConfirm_y; setFocus leaveConfirm_y }
@@ -87,13 +88,13 @@ itemDef {
 		group grpMenu
 		type 1
       	text "Quit"
-		rect 76 75 290 12
-		textalign ITEM_ALIGN_RIGHT
-		textalignx 156
-		textaligny 10
-		textscale .23
+		rect 76 68 290 21
+		textalign ITEM_ALIGN_CENTER
+		textalignx 145
+		textaligny 17
+		textscale .40
 		style WINDOW_STYLE_FILLED
-		backcolor 1 1 1 .02 	
+		backcolor 1 1 1 .07
 		forecolor 1 1 1 1
 		visible 0
       	action { hide grpMenu ; show quitConfirm; show quitConfirm_y; setFocus quitConfirm_y }
@@ -113,7 +114,7 @@ itemDef {
      	textalign 1	
      	textalignx 65
     	textaligny 18        
-	textscale .23
+	textscale .40
 	decoration
       forecolor 1 1 1 1
       visible 1 
@@ -128,7 +129,7 @@ itemDef {
      	textalign 1	
      	textalignx 65
     	textaligny 18        
-	textscale .23
+	textscale .40
 	decoration
       forecolor 1 1 1 1
       visible 1 
@@ -141,7 +142,7 @@ itemDef {
 	group grpConfirm
 	type 1
 	
-	textscale .23
+	textscale .40
 
 	background "ui/assets/button_back.tga"
 	rect 175 110 40 20
@@ -161,7 +162,7 @@ itemDef {
 	group grpConfirm
 	type 1
 	
-	textscale .23
+	textscale .40
 	background "ui/assets/button_back.tga"
 	rect 222 110 40 20
 	textstyle 6
@@ -185,7 +186,7 @@ itemDef {
      	textalign 1	
      	textalignx 64
     	textaligny 18        
-	textscale .23
+	textscale .40
 	decoration
       	forecolor 1 1 1 1
       	visible 1 
@@ -200,7 +201,7 @@ itemDef {
      	textalign 1	
      	textalignx 64
     	textaligny 18        
-	textscale .23
+	textscale .40
 	decoration
       	forecolor 1 1 1 1
       	visible 1 
@@ -214,7 +215,7 @@ itemDef {
 	group grpConfirm
 	type 1
 	
-	textscale .23
+	textscale .40
 	background "ui/assets/button_back.tga"
 	rect 175 110 40 20
 	textstyle 6
@@ -234,7 +235,7 @@ itemDef {
 	group grpConfirm
 	type 1
 	
-	textscale .23
+	textscale .40
 	background "ui/assets/button_back.tga"
 	rect 222 110 40 20
 	textstyle 6
@@ -257,7 +258,7 @@ itemDef {
      	textalign 1	
      	textalignx 64
     	textaligny 18        
-	textscale .23
+	textscale .40
       	forecolor 1 1 1 1
 	decoration
       	visible 1 
@@ -272,7 +273,7 @@ itemDef {
      	textalign 1	
      	textalignx 64
     	textaligny 18        
-	textscale .23
+	textscale .40
       	forecolor 1 1 1 1
 	decoration
       	visible 1 
@@ -285,7 +286,7 @@ itemDef {
 	group grpConfirm
 	type 1
 	
-	textscale .23
+	textscale .40
 	background "ui/assets/button_back.tga"
 	rect 175 110 40 20
 	textstyle 6
@@ -303,7 +304,7 @@ itemDef {
 	text "No"
 	group grpConfirm
 	type 1
-	textscale .23
+	textscale .40
 	rect 222 110 40 20
 	textstyle 6
 	textalign 1
