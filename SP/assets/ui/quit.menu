@@ -14,6 +14,7 @@ menuDef {
     	border 1
 	popup
 	onESC { close quit_popmenu ; open main }
+	onOpen { setFocus yes; }
 
 	itemDef 
 	{
