@@ -40,3 +40,10 @@ profile
 *.opensdf
 *.suo
 .vscode/**
+
+# Release Files
+####################
+
+release
+release/**
+*-iortcw*.zip

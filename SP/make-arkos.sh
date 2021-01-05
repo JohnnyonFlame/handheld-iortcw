@@ -26,3 +26,41 @@
 	COMPILE_ARCH=x86_64 \
 	COMPILE_PLATFORM=linux \
 	make $*
+
+# Create pk3 files with the modded UI and CFG files
+rm -f build/sp_pak_*.pk3
+cd assets; zip -r  ../build/sp_pak_ui.pk3 ./ui
+           zip -rj ../build/sp_pak_settings.pk3 defaults/
+cd ..
+
+# Deploy rg351_default.cfg as default.cfg
+zipnote -w build/sp_pak_settings.pk3 << EOF
+@ rg351_default.cfg
+@=default.cfg
+EOF
+
+# Clear the release deployment folder
+rm -rf release
+mkdir -p release/iortcw/main
+
+# Deploy licenses, binaries and assets
+cp build/release-linux-aarch64/iowolfsp.aarch64 COPYING.txt README.txt release/iortcw/
+cp build/release-linux-aarch64/main/*.so build/sp_pak*.pk3             release/iortcw/main/
+
+cat << EOF >> "release/Return to Castle Wolfenstein.sh"
+	#!/bin/sh
+
+	/roms/ports/iortcw/iowolfsp.aarch64
+EOF
+
+# Package everything up
+if GIT_VERSION=$(git rev-parse --short -q HEAD); then
+	RELEASE_FILENAME=../arkos-iortcw_${GIT_VERSION}.zip
+	rm -f $RELEASE_FILENAME
+	cd release; zip -r $RELEASE_FILENAME *; cd ..
+else
+	echo "Warning: git rev-parse failed, this means your release package has no version information attached"
+	echo "Consider manually tagging your release version and authorship instead."
+	rm -f ../arkos-iortcw_UNVERSIONED.zip
+	cd release; zip -r ../arkos-iortcw_UNVERSIONED.zip *; cd ..
+fi
