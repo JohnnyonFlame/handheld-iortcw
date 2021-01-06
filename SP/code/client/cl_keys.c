@@ -1712,7 +1712,7 @@ void Message_Key( int key ) {
 	char buffer[MAX_STRING_CHARS];
 
 
-	if ( key == K_ESCAPE || key == K_JOY8 ) {
+	if ( key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK ) {
 		Key_SetCatcher( Key_GetCatcher( ) & ~KEYCATCH_MESSAGE );
 		Field_Clear( &chatField );
 		return;
@@ -2231,7 +2231,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 	}
 
 	// console key is hardcoded, so the user can never unbind it
-	if( key == K_CONSOLE || ( keys[K_SHIFT].down && (key == K_ESCAPE || key == K_JOY8) ) )
+	if( key == K_CONSOLE || ( keys[K_SHIFT].down && (key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK) ) )
 	{
 		Con_ToggleConsole_f ();
 		Key_ClearStates ();
@@ -2248,6 +2248,9 @@ void CL_KeyDownEvent( int key, unsigned time )
 					key == K_ENTER ||
 					key == K_JOY7 ||
 					key == K_JOY8 ||
+					key == K_PAD0_B || 
+					key == K_PAD0_START ||
+					key == K_PAD0_BACK ||
 					key == K_JOY2 ) && qtrue ) {
 				if ( qtrue ) {
 					CL_AddReliableCommand( "cameraInterrupt", qfalse );
@@ -2261,7 +2264,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 			}
 		}
 
-		if ( ( Key_GetCatcher( ) & KEYCATCH_CONSOLE ) && (key == K_ESCAPE || key == K_JOY8) ) {
+		if ( ( Key_GetCatcher( ) & KEYCATCH_CONSOLE ) && (key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK) ) {
 			// don't allow menu starting when console is down and camera running
 			return;
 		}
@@ -2287,7 +2290,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 	}
 
 	// escape is always handled special
-	if ( key == K_ESCAPE || key == K_JOY8 ) {\
+	if ( key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK ) {\
 		key = K_ESCAPE;
 		if ( Key_GetCatcher( ) & KEYCATCH_MESSAGE ) {
 			// clear message mode
@@ -2333,7 +2336,7 @@ void CL_KeyDownEvent( int key, unsigned time )
 		} else if ( activeMenu == UIMENU_PREGAME ) {
 			// JohnnyonFlame: Don't eat the B button, so you can escape out of
 			// the PREGAME screen with both Select and B
-			if ( key != K_MOUSE1 && key != K_JOY2 ) {
+			if ( key != K_MOUSE1 && key != K_JOY2 && key != K_PAD0_B ) {
 				return; // eat all keys except mouse click
 			}
 		} else {
@@ -2381,7 +2384,7 @@ void CL_KeyUpEvent( int key, unsigned time )
 	}
 
 	// don't process key-up events for the console key
-	if ( key == K_CONSOLE || ( (key == K_ESCAPE || key == K_JOY8) && keys[K_SHIFT].down ) )
+	if ( key == K_CONSOLE || ( (key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK) && keys[K_SHIFT].down ) )
 		return;
 
 	//

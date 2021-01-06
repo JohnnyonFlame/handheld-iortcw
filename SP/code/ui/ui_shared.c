@@ -2128,9 +2128,9 @@ qboolean Item_ListBox_HandleKey( itemDef_t *item, int key, qboolean down, qboole
 	int max, viewmax;
 
 	// JohnnyonFlame: Allow joysticks to get inside loadgame menus
-	if ( key == K_JOY29 || key == K_JOY31 ) {
+	if ( key == K_JOY29 || key == K_JOY31 || key == K_PAD0_DPAD_UP || key == K_PAD0_DPAD_DOWN ) {
 		viewmax = ( item->window.rect.h / listPtr->elementHeight );
-		if ( key == K_JOY29 ) {
+		if ( key == K_JOY29 || key == K_PAD0_DPAD_UP ) {
 			listPtr->cursorPos--;
 			if ( listPtr->cursorPos < 0 ) {
 				listPtr->cursorPos = 0;
@@ -2145,7 +2145,7 @@ qboolean Item_ListBox_HandleKey( itemDef_t *item, int key, qboolean down, qboole
 			DC->feederSelection( item->special, item->cursorPos );
 			return qtrue;
 		}
-		if ( key == K_JOY31 ) {
+		if ( key == K_JOY31 || key == K_PAD0_DPAD_DOWN ) {
 			listPtr->cursorPos++;
 			if ( listPtr->cursorPos < listPtr->startPos ) {
 				listPtr->startPos = listPtr->cursorPos;
@@ -2162,7 +2162,7 @@ qboolean Item_ListBox_HandleKey( itemDef_t *item, int key, qboolean down, qboole
 		}
 	}
 	// Fake mouse hit
-	if ( key == K_JOY1 ) {
+	if ( key == K_JOY1 || key == K_PAD0_A ) {
 		Item_RunScript( item, listPtr->doubleClick );
 		return qtrue;
 	}
@@ -2628,14 +2628,14 @@ qboolean Item_TextField_HandleKey( itemDef_t *item, int key ) {
 			}
 		}
 
-		if ( key == K_TAB || key == K_DOWNARROW || key == K_KP_DOWNARROW || key == K_JOY31 ) {
+		if ( key == K_TAB || key == K_DOWNARROW || key == K_KP_DOWNARROW || key == K_JOY31 || key == K_PAD0_DPAD_DOWN ) {
 			newItem = Menu_SetNextCursorItem( item->parent );
 			if ( newItem && ( newItem->type == ITEM_TYPE_EDITFIELD || newItem->type == ITEM_TYPE_NUMERICFIELD || newItem->type == ITEM_TYPE_VALIDFILEFIELD ) ) {
 				g_editItem = newItem;
 			}
 		}
 
-		if ( key == K_UPARROW || key == K_KP_UPARROW || key == K_JOY29 ) {
+		if ( key == K_UPARROW || key == K_KP_UPARROW || key == K_JOY29 || key == K_PAD0_DPAD_UP ) {
 			newItem = Menu_SetPrevCursorItem( item->parent );
 			if ( newItem && ( newItem->type == ITEM_TYPE_EDITFIELD || newItem->type == ITEM_TYPE_NUMERICFIELD || newItem->type == ITEM_TYPE_VALIDFILEFIELD ) ) {
 				g_editItem = newItem;
@@ -2650,7 +2650,7 @@ qboolean Item_TextField_HandleKey( itemDef_t *item, int key ) {
 		}
 		// -NERVE - SMF
 
-		if ( key == K_ENTER || key == K_KP_ENTER || key == K_ESCAPE || key == K_JOY8 ) {
+		if ( key == K_ENTER || key == K_KP_ENTER || key == K_ESCAPE || key == K_JOY8 || key == K_PAD0_BACK ) {
 			return qfalse;
 		}
 
@@ -3119,12 +3119,14 @@ int UI_SelectForKey(int key)
 		case K_JOY3:
 		case K_JOY4:
 		case K_JOY30:
+		case K_PAD0_DPAD_RIGHT:
 			return 1; // next
 
 		case K_MOUSE2:
 		case K_LEFTARROW:
 		case K_KP_LEFTARROW:
 		case K_JOY32:
+		case K_PAD0_DPAD_LEFT:
 			return -1; // previous
 	}
 
@@ -3225,12 +3227,16 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	case K_MWHEELUP:
 	case K_JOY29:
 	case K_JOY32:
+	case K_PAD0_DPAD_UP:
+	case K_PAD0_DPAD_LEFT:
 		Menu_SetPrevCursorItem( menu );
 		break;
 
 	case K_ESCAPE:
 	case K_JOY8:
 	case K_JOY2:
+	case K_PAD0_BACK:
+	case K_PAD0_B:
 		if ( !g_waitingForKey && menu->onESC ) {
 			itemDef_t it;
 			it.parent = menu;
@@ -3245,6 +3251,8 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	case K_MWHEELDOWN:
 	case K_JOY30:
 	case K_JOY31:
+	case K_PAD0_DPAD_RIGHT:
+	case K_PAD0_DPAD_DOWN:
 		Menu_SetNextCursorItem( menu );
 		break;
 
@@ -3272,6 +3280,9 @@ void Menu_HandleKey( menuDef_t *menu, int key, qboolean down ) {
 	case K_JOY1:
 	case K_JOY3:
 	case K_JOY4:
+	case K_PAD0_A:
+	case K_PAD0_X:
+	case K_PAD0_Y:
 	case K_AUX1:
 	case K_AUX2:
 	case K_AUX3:
@@ -4035,7 +4046,8 @@ qboolean Item_Bind_HandleKey( itemDef_t *item, int key, qboolean down ) {
 	if (!g_waitingForKey)
  	{
 		if (down && ((key == K_MOUSE1 && Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory))
-				|| key == K_ENTER || key == K_KP_ENTER || key == K_JOY1 || key == K_JOY3 || key == K_JOY4)) {
+				|| key == K_ENTER || key == K_KP_ENTER || key == K_JOY1 || key == K_JOY3 || key == K_JOY4 
+				|| key == K_PAD0_A || key == K_PAD0_X || key == K_PAD0_Y)) {
 			g_waitingForKey = qtrue;
 			g_bindItem = item;
 			return qtrue;
@@ -4057,6 +4069,7 @@ qboolean Item_Bind_HandleKey( itemDef_t *item, int key, qboolean down ) {
 		{
 		case K_ESCAPE:
 		case K_JOY8:
+		case K_PAD0_BACK:
 			g_waitingForKey = qfalse;
 			return qtrue;
 
