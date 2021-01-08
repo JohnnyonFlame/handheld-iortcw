@@ -267,10 +267,10 @@ menuDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 134 40 14 
-		textalign 1
+		rect 224 134 200 14 
+		textalign 0
 		textscale .6		
-		textalignx 0
+		textalignx 57
 		textaligny 14
 		forecolor .9 .9 .9 1
 		visible 1
@@ -290,8 +290,8 @@ menuDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 174 72 14 
-		textalign 1
+		rect 224 174 200 14 
+		textalign 0
 		textscale .6		
 		textalignx 0
 		textaligny 14
@@ -316,8 +316,8 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 214 56 14 
-		textalign 1
+		rect 234 214 200 14 
+		textalign 0
 		textscale .6		
 		textalignx 0
 		textaligny 14
@@ -379,10 +379,10 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 254 32 14 
-		textalign 1
+		rect 224 254 200 14 
+		textalign 0
 		textscale .6		
-		textalignx 0
+		textalignx 55
 		textaligny 14
 		forecolor .9 .9 .9 1
 		visible 1
@@ -404,10 +404,10 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 294 32 14
-		textalign 1
+		rect 224 294 200 14
+		textalign 0
 		textscale .6		
-		textalignx 0
+		textalignx 33
 		textaligny 14
 		forecolor .9 .9 .9 1
 		visible 1
@@ -425,10 +425,10 @@ itemDef {
 		type 1
 		style 0	
 		textstyle 6
-		rect 320 334 32 14 
-		textalign 1
+		rect 224 334 200 14 
+		textalign 0
 		textscale .6		
-		textalignx 0
+		textalignx 58
 		textaligny 14
 		textfont UI_FONT_NORMAL
 		forecolor .9 .9 .9 .9
