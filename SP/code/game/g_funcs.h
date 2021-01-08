@@ -1495,7 +1495,9 @@ If you have questions concerning this license or the applicable additional terms
 {"AIChar_GetPainLocation", (byte *)AIChar_GetPainLocation},
 {"AIChar_Death", (byte *)AIChar_Death},
 {"AIChar_SetBBox", (byte *)AIChar_SetBBox},
+#ifdef AUTOAIM
 {"SysMilliseconds", (byte *)SysMilliseconds},
+#endif
 {"AICast_RegisterPain", (byte *)AICast_RegisterPain},
 {"AICast_NumAttempts", (byte *)AICast_NumAttempts},
 {"AICast_PlayTime", (byte *)AICast_PlayTime},
